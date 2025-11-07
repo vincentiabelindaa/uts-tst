@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>UTS TST - Visualisasi API</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Demo Visualisasi Integrasi API</h1>
+
+  <nav class="navigation-tabs">
+    <button class="nav-button active" onclick="showSection('maps-section')">1. Lokasi (Maps)</button>
+    <button class="nav-button" onclick="showSection('weather-section')">2. Cuaca</button>
+    <button class="nav-button" onclick="showSection('currency-section')">3. Mata Uang</button>
+    <button class="nav-button" onclick="showSection('flights-section')">4. Penerbangan</button>
+  </nav>
+  <section id="maps-section" class="api-section active">
+    <h2>1. Visualisasi Lokasi (Maps API)</h2>
+    <p>Gunakan pencarian di bawah ini untuk memvisualisasikan lokasi akomodasi, alamat, atau area tertentu secara instan.</p>
+    
+    <div class="input-group">
+      <input type="text" id="lokasiInput" placeholder="Cari hotel, alamat, atau kota...">
+      <button onclick="cariLokasi()">Cari</button>
+    </div>
+    <br>
+    
+    <iframe
+      id="petaGoogle"
+      width="100%"
+      height="450"
+      style="border:0;"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBS5F9iWtFYJKjPeg3unvqKPplpZFpshX0&q=Kuta,Bali">
+    </iframe>
+  </section>
+
+  <section id="weather-section" class="api-section">
+    <h2>2. Cek Kondisi Cuaca (Weather API)</h2>
+    <div class="input-group">
+      <input type="text" id="weatherInput" placeholder="Ketik nama kota atau negara...">
+      <button onclick="cariCuaca()">Cari Cuaca</button>
+    </div>
+    <div id="weather">Masukkan nama kota untuk melihat cuaca.</div>
+  </section>
+
+  <section id="currency-section" class="api-section">
+    <h2>3. Konverter Mata Uang (Exchange Rate API)</h2>
+    <div class="input-group">
+      <label for="amountInput">Jumlah:</label>
+      <input type="number" id="amountInput" placeholder="Masukkan jumlah" value="75">
+      
+      <label for="currencySelect">Dari Mata Uang:</label>
+      <select id="currencySelect">
+        <option value="">Memuat mata uang...</option>
+      </select>
+      
+      <button onclick="convertCurrency()">Konversi ke Rupiah</button>
+    </div>
+    <div id="rateInfo"></div>
+    <div id="conversionResult"></div>
+  </section>
+
+  <section id="flights-section" class="api-section">
+    <h2>4. Cek Jadwal Penerbangan (Aviation API)</h2>
+    <p>Masukkan kode bandara IATA (Contoh: CGK untuk Jakarta, SIN untuk Singapura).</p>
+    
+    <div class="input-group">
+      <label for="flightOriginInput">Dari:</label>
+      <input type="text" id="flightOriginInput" placeholder="Contoh: SIN" value="SIN">
+      
+      <label for="flightDestInput">Ke:</label>
+      <input type="text" id="flightDestInput" placeholder="Contoh: CGK" value="CGK">
+      
+      <button onclick="cariPenerbangan()">Cari Penerbangan</button>
+    </div>
+
+    <div id="flightResults">Masukkan kode bandara untuk mencari jadwal.</div>
+  </section>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
